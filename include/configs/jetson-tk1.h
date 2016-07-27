@@ -19,6 +19,7 @@
 #define CONFIG_TEGRA124_LP0
 #endif
 
+
 #define CONFIG_SERIAL_TAG
 #define CONFIG_TEGRA_SERIAL_HIGH	0x01770000
 #define CONFIG_TEGRA_SERIAL_LOW		0x034200FF
@@ -90,27 +91,20 @@
 /* Android fastboot support */
 #define CONFIG_CMD_FASTBOOT
 #define CONFIG_FASTBOOT_FLASH
+#define CONFIG_FASTBOOT_GPT_NAME	0
 #define CONFIG_FASTBOOT_FLASH_MMC_DEV	0
 #define CONFIG_USB_FASTBOOT_BUF_SIZE	  0x40000000
 #define CONFIG_USB_FASTBOOT_BUF_ADDR	  (NV_PA_SDRAM_BASE + 0x10000000)
 
 /* Android bootimg support */
-#define CONFIG_CMD_BOOTA
 #define CONFIG_ANDROID_BOOT_IMAGE
 
-#undef CONFIG_BOOTCOMMAND
-#undef BOOT_ENV_SETTINGS
-
-#define BOOT_ENV_SETTINGS \
-        "bootcmd=" \
-		"boota ${boota_dev}\0" \
-	"bootcmd_android_recovery=" \
-		"boota ${recovery_dev} recovery\0" \
-	"fastboot_dev=mmc1\0" \
-	"boota_dev=mmc1\0" \
-	"recovery_dev=mmc1\0" \
-	"dev_autodetect=yes\0"
-
+#define CONFIG_CMD_BOOTA
+#define CONFIG_CMD_BOOTA_BOOT_PART	      "LNX"
+#define CONFIG_CMD_BOOTA_RECOVERY_PART	  "SOS"
+#define CONFIG_CMD_BOOTA_DT_PART	      "DTB"
+#define CONFIG_ANDROID_DT_HDR_BUFF	      (NV_PA_SDRAM_BASE + 0x03000000)
+#define CONFIG_ANDROID_BOOT_HDR_BUFF	  (NV_PA_SDRAM_BASE + 0x04000000)
 #define BOARD_EXTRA_ENV_SETTINGS \
 	"bootargs_append=" \
 	"init=init console=ttyS0,115200n8 " \
