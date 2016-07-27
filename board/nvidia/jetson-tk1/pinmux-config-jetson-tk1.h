@@ -118,7 +118,7 @@ static const struct pmux_pingrp_config jetson_tk1_pingrps[] = {
 	PINCFG(PH6,                    GMI,          DOWN,   TRISTATE, OUTPUT,  DEFAULT, DEFAULT),
 	PINCFG(PH7,                    DEFAULT,      NORMAL, NORMAL,   INPUT,   DEFAULT, DEFAULT),
 	PINCFG(PI0,                    DEFAULT,      NORMAL, NORMAL,   OUTPUT,  DEFAULT, DEFAULT),
-	PINCFG(PI1,                    DEFAULT,      NORMAL, TRISTATE, INPUT,   DEFAULT, DEFAULT),
+	PINCFG(PI1,                    DEFAULT,      UP,     TRISTATE, INPUT,   DEFAULT, DEFAULT),
 	PINCFG(PI2,                    RSVD4,        DOWN,   TRISTATE, OUTPUT,  DEFAULT, DEFAULT),
 	PINCFG(PI3,                    SPI4,         NORMAL, NORMAL,   OUTPUT,  DEFAULT, DEFAULT),
 	PINCFG(PI4,                    GMI,          DOWN,   TRISTATE, OUTPUT,  DEFAULT, DEFAULT),
