@@ -2279,7 +2279,18 @@ static void cb_flash(struct usb_ep *ep, struct usb_request *req)
 
 static void cb_oem(struct usb_ep *ep, struct usb_request *req)
 {
+#if defined(CONFIG_TEGRA124)
 	char *cmd = req->buf;
+	struct pmc_ctlr *pmc = (struct pmc_ctlr *)NV_PA_PMC_BASE;
+	if (strncmp("-bootloader", cmd + 6, 11) == 0) {
+		printf("Setting reboot-bootloader!\n");
+		writel(readl(&pmc->pmc_scratch0) | (1 << 30), &pmc->pmc_scratch0);
+	}
+	else if (strncmp("-recovery", cmd + 6, 9) == 0) {
+		printf("Setting reboot-recovery!\n");
+		writel(readl(&pmc->pmc_scratch0) | (1 << 31), &pmc->pmc_scratch0);
+	}
+#endif
 #if defined(CONFIG_FASTBOOT_FLASH) && defined(CONFIG_FASTBOOT_FLASH_MMC_DEV)
 	if (strncmp("format", cmd + 4, 6) == 0) {
 		char cmdbuf[32];
