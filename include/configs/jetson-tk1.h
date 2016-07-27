@@ -89,6 +89,8 @@
 
 /* Android fastboot support */
 #define CONFIG_CMD_FASTBOOT
+#define CONFIG_FASTBOOT_FLASH
+#define CONFIG_FASTBOOT_FLASH_MMC_DEV	0
 #define CONFIG_USB_FASTBOOT_BUF_SIZE	  0x40000000
 #define CONFIG_USB_FASTBOOT_BUF_ADDR	  (NV_PA_SDRAM_BASE + 0x10000000)
 
@@ -96,15 +98,18 @@
 #define CONFIG_CMD_BOOTA
 #define CONFIG_ANDROID_BOOT_IMAGE
 
+#undef CONFIG_BOOTCOMMAND
+#undef BOOT_ENV_SETTINGS
+
 #define BOOT_ENV_SETTINGS \
         "bootcmd=" \
-                 "boota ${boota_dev}\0" \
-        "bootcmd_android_recovery=" \
-                 "boota ${recovery_dev} recovery\0" \
-        "fastboot_dev=mmc1\0" \
-        "boota_dev=mmc1\0" \
-        "recovery_dev=mmc1\0" \
-        "dev_autodetect=yes\0"
+		"boota ${boota_dev}\0" \
+	"bootcmd_android_recovery=" \
+		"boota ${recovery_dev} recovery\0" \
+	"fastboot_dev=mmc1\0" \
+	"boota_dev=mmc1\0" \
+	"recovery_dev=mmc1\0" \
+	"dev_autodetect=yes\0"
 
 #define BOARD_EXTRA_ENV_SETTINGS \
 	"bootargs_append=" \
