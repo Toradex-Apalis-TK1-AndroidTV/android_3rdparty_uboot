@@ -19,26 +19,12 @@
 #define CONFIG_TEGRA124_LP0
 #endif
 
-/* Use memory controller SDRAM size instead of ODMDATA */
-#define CONFIG_TEGRA_USE_EMC_DRAM_SIZE
-
-/* Enable fdt support for Jetson TK1. Flash the image in u-boot-dtb.bin */
-#define CONFIG_DEFAULT_DEVICE_TREE	tegra124-jetson-tk1
-#define CONFIG_OF_CONTROL
-#define CONFIG_OF_SEPARATE
-#define CONFIG_OF_LIBFDT
-#define CONFIG_OF_BOARD_SETUP
-
 #define CONFIG_SERIAL_TAG
 #define CONFIG_TEGRA_SERIAL_HIGH	0x01770000
 #define CONFIG_TEGRA_SERIAL_LOW		0x034200FF
 
-/* The following are used to retrieve the board id from an eeprom */
-#define CONFIG_SERIAL_EEPROM
-#define EEPROM_I2C_BUS         1
-#define EEPROM_I2C_ADDRESS     0x56
-#define EEPROM_SERIAL_OFFSET   0x04
-#define NUM_SERIAL_ID_BYTES    8
+/* Use memory controller SDRAM size instead of ODMDATA */
+#define CONFIG_TEGRA_USE_EMC_DRAM_SIZE
 
 /* High-level configuration options */
 #define V_PROMPT			"Tegra124 (Jetson TK1) # "
@@ -109,11 +95,17 @@
 /* Android bootimg support */
 #define CONFIG_CMD_BOOTA
 #define CONFIG_ANDROID_BOOT_IMAGE
-#define CONFIG_CMD_BOOTA_BOOT_PART	      "LNX"
-#define CONFIG_CMD_BOOTA_RECOVERY_PART	  "SOS"
-#define CONFIG_CMD_BOOTA_DT_PART	      "DTB"
-#define CONFIG_ANDROID_DT_HDR_BUFF	      (NV_PA_SDRAM_BASE + 0x03000000)
-#define CONFIG_ANDROID_BOOT_HDR_BUFF	  (NV_PA_SDRAM_BASE + 0x04000000)
+
+#define BOOT_ENV_SETTINGS \
+        "bootcmd=" \
+                 "boota ${boota_dev}\0" \
+        "bootcmd_android_recovery=" \
+                 "boota ${recovery_dev} recovery\0" \
+        "fastboot_dev=mmc1\0" \
+        "boota_dev=mmc1\0" \
+        "recovery_dev=mmc1\0" \
+        "dev_autodetect=yes\0"
+
 #define BOARD_EXTRA_ENV_SETTINGS \
 	"bootargs_append=" \
 	"init=init console=ttyS0,115200n8 " \
