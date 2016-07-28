@@ -40,6 +40,9 @@
 #define CONFIG_TEGRA_ENABLE_UARTD
 #define CONFIG_SYS_NS16550_COM1		NV_PA_APB_UARTD_BASE
 
+#define CONFIG_BOARD_EARLY_INIT_F
+#define CONFIG_DISPLAY_BOARDINFO_LATE
+
 /* I2C */
 #define CONFIG_SYS_I2C_TEGRA
 #define CONFIG_CMD_I2C
@@ -49,6 +52,9 @@
 #define CONFIG_GENERIC_MMC
 #define CONFIG_TEGRA_MMC
 #define CONFIG_CMD_MMC
+
+/* EFI Partition Support */
+#define CONFIG_EFI_PARTITION
 
 /* Environment in eMMC, at the end of 2nd "boot sector" */
 #define CONFIG_ENV_IS_IN_MMC
@@ -95,6 +101,7 @@
 /* Android fastboot support */
 #define CONFIG_CMD_FASTBOOT
 #define CONFIG_FASTBOOT_FLASH
+#define CONFIG_FASTBOOT_GPT_NAME	0
 #define CONFIG_FASTBOOT_FLASH_MMC_DEV	0
 #define CONFIG_USB_FASTBOOT_BUF_SIZE	  0x40000000
 #define CONFIG_USB_FASTBOOT_BUF_ADDR	  (NV_PA_SDRAM_BASE + 0x10000000)
@@ -109,15 +116,6 @@
 #define CONFIG_ANDROID_DT_HDR_BUFF	      (NV_PA_SDRAM_BASE + 0x03000000)
 #define CONFIG_ANDROID_BOOT_HDR_BUFF	  (NV_PA_SDRAM_BASE + 0x04000000)
 #define BOARD_EXTRA_ENV_SETTINGS \
-	"fastboot_partition_alias_boot=LNX\0" \
-	"fastboot_partition_alias_boot=DTB\0" \
-	"fastboot_partition_alias_recovery=SOS\0" \
-	"fastboot_partition_alias_system=APP\0" \
-	"fastboot_partition_alias_cache=CAC\0" \
-	"fastboot_partition_alias_misc=MSC\0" \
-	"fastboot_partition_alias_factory=FCT\0" \
-	"fastboot_partition_alias_userdata=UDA\0" \
-	"fastboot_partition_alias_vendor=VNR\0" \
 	"bootargs_append=" \
 	"init=init console=ttyS0,115200n8 " \
 	"lp0_vec=2064@0xf46ff000 mem=1862M@2048M vpr=151M@3945M tsec=32M@3913M " \

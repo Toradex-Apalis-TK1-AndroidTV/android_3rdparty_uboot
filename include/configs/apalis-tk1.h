@@ -34,6 +34,7 @@
 #define CONFIG_CUSTOM_BOARDINFO		/* not from device-tree model node */
 #undef CONFIG_DISPLAY_BOARDINFO
 #define CONFIG_DISPLAY_BOARDINFO_LATE
+#define CONFIG_BOARD_EARLY_INIT_F
 
 /* Board-specific serial config */
 #define CONFIG_SERIAL_MULTI
