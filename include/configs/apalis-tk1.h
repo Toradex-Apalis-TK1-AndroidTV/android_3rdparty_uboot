@@ -102,14 +102,14 @@
 #define CONFIG_ANDROID_DT_HDR_BUFF	      (NV_PA_SDRAM_BASE + 0x03000000)
 #define CONFIG_ANDROID_BOOT_HDR_BUFF	  (NV_PA_SDRAM_BASE + 0x04000000)
 #define BOARD_EXTRA_ENV_SETTINGS \
-	"fastboot_partition_alias_boot=LNX\0" \		
-	"fastboot_partition_alias_boot=DTB\0" \		
-	"fastboot_partition_alias_recovery=SOS\0" \		
-	"fastboot_partition_alias_system=APP\0" \		
-	"fastboot_partition_alias_cache=CAC\0" \		
-	"fastboot_partition_alias_misc=MSC\0" \		
-	"fastboot_partition_alias_factory=FCT\0" \		
-	"fastboot_partition_alias_userdata=UDA\0" \		
+	"fastboot_partition_alias_boot=LNX\0" \
+	"fastboot_partition_alias_boot=DTB\0" \
+	"fastboot_partition_alias_recovery=SOS\0" \
+	"fastboot_partition_alias_system=APP\0" \
+	"fastboot_partition_alias_cache=CAC\0" \
+	"fastboot_partition_alias_misc=MSC\0" \
+	"fastboot_partition_alias_factory=FCT\0" \
+	"fastboot_partition_alias_userdata=UDA\0" \
 	"fastboot_partition_alias_vendor=VNR\0" \
 	"bootargs_append=" \
 	"init=init console=ttyS0,115200n8 " \
