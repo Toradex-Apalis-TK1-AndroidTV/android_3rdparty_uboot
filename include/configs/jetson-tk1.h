@@ -23,6 +23,7 @@
 #define CONFIG_OF_BOARD_SETUP
 #define CONFIG_MISC_INIT_R		/* call misc_init_r during start up */
 
+#undef CONFIG_SERIAL_TAG
 #define CONFIG_SERIAL_TAG
 #define CONFIG_TEGRA_SERIAL_HIGH	0x01770000
 #define CONFIG_TEGRA_SERIAL_LOW		0x034200FF
@@ -124,7 +125,7 @@
 	"tegraid=40.1.1.0.0 tegra_fbmem=32899072@0xad012000 fbcon=map:1 " \
 	"video=tegrafb memtype=255 ddr_die=2048M@2048M section=256M " \
 	"debug_uartport=lsport,3 " \
-	"power_supply=Adapter audio_codec=rt5640 gpt " \
+	"power_supply=Adapter audio_codec=sgtl5000 gpt " \
 	"usbcore.old_scheme_first=1 usb_port_owner_info=0 " \
 	"lane_owner_info=6 emc_max_dvfs=0 " \
 	"pmuboard=0x0177:0x0000:0x02:0x43:0x00 " \
