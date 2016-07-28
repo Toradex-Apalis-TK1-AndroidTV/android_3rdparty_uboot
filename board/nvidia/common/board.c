@@ -45,6 +45,10 @@
 #include "emc.h"
 #include <libfdt.h>
 
+#ifdef CONFIG_ANDROID_RECOVERY
+#include <recovery.h>
+#endif
+
 DECLARE_GLOBAL_DATA_PTR;
 
 #ifdef CONFIG_SPL_BUILD
