@@ -19,6 +19,8 @@
 #define CONFIG_TEGRA124_LP0
 #endif
 
+#define CONFIG_MISC_INIT_R		/* call recovery during start up */
+
 #define CONFIG_SERIAL_TAG
 #define CONFIG_TEGRA_SERIAL_HIGH	0x01770000
 #define CONFIG_TEGRA_SERIAL_LOW		0x034200FF
