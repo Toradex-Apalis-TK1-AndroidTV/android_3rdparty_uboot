@@ -4,17 +4,12 @@
  * SPDX-License-Identifier:	GPL-2.0+
  */
 
-#include <config.h>
 #include <common.h>
 #include <fb_mmc.h>
 #include <part.h>
 #include <aboot.h>
 #include <sparse_format.h>
 #include <mmc.h>
-
-#ifndef CONFIG_FASTBOOT_GPT_NAME
-#define CONFIG_FASTBOOT_GPT_NAME GPT_ENTRY_NAME
-#endif
 
 /* The 64 defined bytes plus the '\0' */
 #define RESPONSE_LEN	(64 + 1)
@@ -68,6 +63,7 @@ static void write_raw_image(block_dev_desc_t *dev_desc, disk_partition_t *info,
 void fb_mmc_flash_write(const char *cmd, void *download_buffer,
 			unsigned int download_bytes, char *response)
 {
+	int ret;
 	block_dev_desc_t *dev_desc;
 	disk_partition_t info;
 
@@ -83,6 +79,7 @@ void fb_mmc_flash_write(const char *cmd, void *download_buffer,
 
 	ret = get_partition_info_efi_by_name(dev_desc, cmd, &info);
 	if (ret) {
+
 		char env_alias_name[25 + 32 + 1]; /* strlen("fastboot_partition_alias_") + 32(part_name) + 1 */
 		char *aliased_part_name;
 
