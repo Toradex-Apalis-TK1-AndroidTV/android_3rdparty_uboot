@@ -79,7 +79,6 @@ void fb_mmc_flash_write(const char *cmd, void *download_buffer,
 
 	ret = get_partition_info_efi_by_name(dev_desc, cmd, &info);
 	if (ret) {
-
 		char env_alias_name[25 + 32 + 1]; /* strlen("fastboot_partition_alias_") + 32(part_name) + 1 */
 		char *aliased_part_name;
 
@@ -92,26 +91,6 @@ void fb_mmc_flash_write(const char *cmd, void *download_buffer,
 	}
 
 	if (ret) {
-
-	if (strcmp(cmd, CONFIG_FASTBOOT_GPT_NAME) == 0) {
-		printf("%s: updating MBR, Primary and Backup GPT(s)\n",
-		       __func__);
-		if (is_valid_gpt_buf(dev_desc, download_buffer)) {
-			printf("%s: invalid GPT - refusing to write to flash\n",
-			       __func__);
-			fastboot_fail("invalid GPT partition");
-			return;
-		}
-		if (write_mbr_and_gpt_partitions(dev_desc, download_buffer)) {
-			printf("%s: writing GPT partitions failed\n", __func__);
-			fastboot_fail("writing GPT partitions failed");
-			return;
-		}
-		printf("........ success\n");
-		fastboot_okay("");
-		return;
-	} else if (get_partition_info_efi_by_name(dev_desc, cmd, &info)) {
-
 		error("cannot find partition: '%s'\n", cmd);
 		fastboot_fail("cannot find partition");
 		return;
@@ -179,3 +158,4 @@ void fb_mmc_erase(const char *cmd, char *response)
 	       blks_size * info.blksz, cmd);
 	fastboot_okay("");
 }
+
