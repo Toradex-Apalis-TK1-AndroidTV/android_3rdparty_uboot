@@ -35,9 +35,6 @@
 #include <asm/bootm.h>
 #include <nand.h>
 #include <aboot.h>
-#ifdef CONFIG_ANDROID_RECOVERY
-#include <recovery.h>
-#endif
 #endif
 
 #define FASTBOOT_VERSION		"0.4"
@@ -1470,11 +1467,6 @@ void fastboot_setup(void)
 
 	/*get the fastboot dev*/
 	_fastboot_setup_dev();
-
-	/*check if we need to setup recovery*/
-#ifdef CONFIG_ANDROID_RECOVERY
-    check_recovery_mode();
-#endif
 
 	/*load partitions information for the fastboot dev*/
 	_fastboot_load_partitions();
