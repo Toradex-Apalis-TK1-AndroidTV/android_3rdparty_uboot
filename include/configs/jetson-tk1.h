@@ -89,6 +89,9 @@
 #define CONFIG_CMD_NET
 #define CONFIG_CMD_DHCP
 
+/* EFI Partition support */
+#define CONFIG_EFI_PARTITION
+
 /* Android fastboot support */
 #define CONFIG_CMD_FASTBOOT
 #define CONFIG_FASTBOOT_FLASH
