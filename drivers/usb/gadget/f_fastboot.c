@@ -2360,6 +2360,9 @@ static const struct cmd_dispatch_info cmd_dispatch_info[] = {
 	{
 		.cmd = "flash",
 		.cb = cb_flash,
+	}, {
+		.cmd = "erase",
+		.cb = cb_erase,
 	},
 #endif
 	{
