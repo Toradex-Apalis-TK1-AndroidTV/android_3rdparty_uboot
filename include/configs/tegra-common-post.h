@@ -51,6 +51,14 @@
 #endif
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
+	"partitions=" \
+	"name=LNX,size=16MiB;" \
+	"name=DTB,size=4MiB;" \
+	"name=SOS,size=16MiB;" \
+	"name=APP,size=1342MiB;" \
+	"name=VNR,size=200MiB;" \
+	"name=CAC,size=400MiB;" \
+	"name=UDA,size=12420MiB\0" \
 	TEGRA_DEVICE_SETTINGS \
 	MEM_LAYOUT_ENV_SETTINGS \
 	"fdt_high=ffffffff\0" \

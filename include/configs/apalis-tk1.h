@@ -50,6 +50,14 @@
 #define CONFIG_TEGRA_MMC
 #define CONFIG_CMD_MMC
 
+#define CONFIG_PARTITION_UUIDS
+#define CONFIG_RANDOM_UUID
+#define CONFIG_CMD_UUID
+#define CONFIG_CMD_GPT
+#define CONFIG_EFI_PARTITION
+#define CONFIG_FS_EXT4
+#define CONFIG_CMD_FS_GENERIC
+
 /* Environment in eMMC, at the end of 2nd "boot sector" */
 #define CONFIG_ENV_IS_IN_MMC
 #define CONFIG_ENV_OFFSET		(-CONFIG_ENV_SIZE)
@@ -75,6 +83,9 @@
 #define CONFIG_E1000
 #define CONFIG_E1000_NO_NVM
 
+#define CONFIG_USB_GADGET
+#define CONFIG_USBDOWNLOAD_GADGET
+
 /* General networking support */
 #define CONFIG_CMD_NET
 #define CONFIG_CMD_DHCP
@@ -86,8 +97,6 @@
 #define CONFIG_FASTBOOT_FLASH_MMC_DEV	0
 #define CONFIG_USB_FASTBOOT_BUF_SIZE	  0x40000000
 #define CONFIG_USB_FASTBOOT_BUF_ADDR	  (NV_PA_SDRAM_BASE + 0x10000000)
-
-#define CONFIG_EFI_PARTITION
 
 /* Android bootimg support */
 #define CONFIG_ANDROID_BOOT_IMAGE
